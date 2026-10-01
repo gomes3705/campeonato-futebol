@@ -1,53 +1,218 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Campeonato de Futebol</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-    <h1>Campeonato de Futebol</h1>
+    <header class="header-app">
+        <div class="header-badge">⚽ Painel do Campeonato</div>
+        <h1>Campeonato de Futebol</h1>
+        <p class="subtitulo">Gerenciador de times, jogadores, partidas e classificação</p>
+    </header>
 
-    <div class="secao">
-        <h2>Cadastrar time</h2>
-        <input type="text" id="nomeTime" placeholder="Nome do time">
-        <input type="text" id="nomeTecnico" placeholder="Nome do técnico">
-        <button onclick="cadastrarTime()">Cadastrar</button>
-    </div>
+    <main class="app-container">
+        <!-- Navegação por etapas (Stepper / Abas) -->
+        <nav class="stepper-nav" aria-label="Navegação dos cards">
+            <button class="step-btn ativo" onclick="irParaCard(0)" id="stepBtn0" type="button">
+                <span class="step-num">1</span>
+                <span class="step-text">Times</span>
+            </button>
+            <button class="step-btn" onclick="irParaCard(1)" id="stepBtn1" type="button">
+                <span class="step-num">2</span>
+                <span class="step-text">Jogadores</span>
+            </button>
+            <button class="step-btn" onclick="irParaCard(2)" id="stepBtn2" type="button">
+                <span class="step-num">3</span>
+                <span class="step-text">Partidas</span>
+            </button>
+            <button class="step-btn" onclick="irParaCard(3)" id="stepBtn3" type="button">
+                <span class="step-num">4</span>
+                <span class="step-text">Classificação</span>
+            </button>
+        </nav>
 
-    <div class="secao">
-        <h2>Cadastrar jogador</h2>
-        <select id="selectTime"></select>
-        <input type="text" id="nomeJogador" placeholder="Nome do jogador">
-        <input type="text" id="posicaoJogador" placeholder="Posição">
-        <button onclick="cadastrarJogador()">Cadastrar</button>
-    </div>
+        <!-- Container com 1 card por página -->
+        <div class="cards-wrapper" id="cardsWrapper">
+            
+            <!-- Card 1: Cadastrar time -->
+            <section class="secao card ativo" id="card-0">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🛡️</span>
+                        <h2>Cadastrar time</h2>
+                    </div>
+                    <span class="card-step-badge">Etapa 1 de 4</span>
+                </div>
 
-    <div class="secao">
-        <h2>Registrar partida</h2>
-        <select id="selectCasa"></select>
-        <input type="number" id="golsCasa" placeholder="Gols" min="0">
-        x
-        <input type="number" id="golsVisitante" placeholder="Gols" min="0">
-        <select id="selectVisitante"></select>
-        <button onclick="registrarPartida()">Registrar</button>
-    </div>
+                <div class="form-group">
+                    <label class="form-label" for="nomeTime">Nome do Time</label>
+                    <input type="text" id="nomeTime" placeholder="Ex: Flamengo, Santos, Real Madrid...">
+                </div>
 
-    <div class="secao">
-        <h2>Classificação</h2>
-        <table id="tabelaClassificacao">
-            <tr>
-                <th>Time</th>
-                <th>Pts</th>
-                <th>V</th>
-                <th>E</th>
-                <th>D</th>
-                <th>SG</th>
-            </tr>
-        </table>
-    </div>
+                <div class="form-group">
+                    <label class="form-label" for="nomeTecnico">Nome do Técnico</label>
+                    <input type="text" id="nomeTecnico" placeholder="Ex: Dorival Júnior, Ancelotti...">
+                </div>
+
+                <button class="btn-primary" onclick="cadastrarTime()" type="button" id="btnCadastrarTime">
+                    <span>Cadastrar time</span>
+                    <span>➜</span>
+                </button>
+
+                <div class="card-footer-nav">
+                    <button class="btn-nav" disabled type="button">← Anterior</button>
+                    <div class="page-indicator-dots" id="dots-0">
+                        <span class="dot ativo"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                    <button class="btn-nav btn-nav-primary" onclick="irParaCard(1)" type="button">Próximo →</button>
+                </div>
+            </section>
+
+            <!-- Card 2: Cadastrar jogador -->
+            <section class="secao card" id="card-1">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🏃</span>
+                        <h2>Cadastrar jogador</h2>
+                    </div>
+                    <span class="card-step-badge">Etapa 2 de 4</span>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="selectTime">Selecione o Time</label>
+                    <select id="selectTime"></select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="nomeJogador">Nome do Jogador</label>
+                    <input type="text" id="nomeJogador" placeholder="Ex: Vini Jr., Neymar...">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="posicaoJogador">Posição em Campo</label>
+                    <input type="text" id="posicaoJogador" placeholder="Ex: Atacante, Meia, Zagueiro, Goleiro...">
+                </div>
+
+                <button class="btn-primary" onclick="cadastrarJogador()" type="button" id="btnCadastrarJogador">
+                    <span>Cadastrar jogador</span>
+                    <span>➜</span>
+                </button>
+
+                <div class="card-footer-nav">
+                    <button class="btn-nav" onclick="irParaCard(0)" type="button">← Anterior</button>
+                    <div class="page-indicator-dots" id="dots-1">
+                        <span class="dot"></span>
+                        <span class="dot ativo"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                    <button class="btn-nav btn-nav-primary" onclick="irParaCard(2)" type="button">Próximo →</button>
+                </div>
+            </section>
+
+            <!-- Card 3: Registrar partida -->
+            <section class="secao card" id="card-2">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">⚔️</span>
+                        <h2>Registrar partida</h2>
+                    </div>
+                    <span class="card-step-badge">Etapa 3 de 4</span>
+                </div>
+
+                <div class="match-board">
+                    <div class="team-box">
+                        <label class="form-label" for="selectCasa">Mandante (Casa)</label>
+                        <select id="selectCasa"></select>
+                        <div class="score-inputs">
+                            <input type="number" id="golsCasa" placeholder="0" min="0" aria-label="Gols do mandante">
+                        </div>
+                    </div>
+
+                    <div class="match-vs">VS</div>
+
+                    <div class="team-box">
+                        <label class="form-label" for="selectVisitante">Visitante</label>
+                        <select id="selectVisitante"></select>
+                        <div class="score-inputs">
+                            <input type="number" id="golsVisitante" placeholder="0" min="0" aria-label="Gols do visitante">
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn-primary" onclick="registrarPartida()" type="button" id="btnRegistrarPartida">
+                    <span>Registrar partida</span>
+                    <span>➜</span>
+                </button>
+
+                <div class="card-footer-nav">
+                    <button class="btn-nav" onclick="irParaCard(1)" type="button">← Anterior</button>
+                    <div class="page-indicator-dots" id="dots-2">
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot ativo"></span>
+                        <span class="dot"></span>
+                    </div>
+                    <button class="btn-nav btn-nav-primary" onclick="irParaCard(3)" type="button">Classificação →</button>
+                </div>
+            </section>
+
+            <!-- Card 4: Classificação -->
+            <section class="secao card" id="card-3">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🏆</span>
+                        <h2>Tabela de Classificação</h2>
+                    </div>
+                    <span class="card-step-badge">Etapa 4 de 4</span>
+                </div>
+
+                <div class="table-responsive">
+                    <table id="tabelaClassificacao">
+                        <thead>
+                            <tr>
+                                <th>Time</th>
+                                <th>Pts</th>
+                                <th>V</th>
+                                <th>E</th>
+                                <th>D</th>
+                                <th>SG</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Preenchido via script.js -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="card-footer-nav">
+                    <button class="btn-nav" onclick="irParaCard(2)" type="button">← Nova partida</button>
+                    <div class="page-indicator-dots" id="dots-3">
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot ativo"></span>
+                    </div>
+                    <button class="btn-nav btn-nav-primary" onclick="irParaCard(0)" type="button">➕ Novo time</button>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Notificações Toast -->
+    <div id="toastContainer" class="toast-container" aria-live="polite"></div>
 
     <script src="script.js"></script>
 </body>
+
 </html>

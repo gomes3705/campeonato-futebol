@@ -8,16 +8,35 @@ public class Main {
     static Time[] times = new Time[10];
     static int totalTimes = 0;
 
+    // Metodo auxiliar para leitura segura de inteiros (evita NumberFormatException)
+    public static int lerInteiro(String mensagem) {
+        while (true) {
+            System.out.print(mensagem);
+            String entrada = scanner.nextLine().trim();
+            try {
+                return Integer.parseInt(entrada);
+            } catch (NumberFormatException e) {
+                // Caso o usuario digite "40 anos", "40+Anos", etc., tenta extrair os digitos
+                String apenasDigitos = entrada.replaceAll("[^0-9]", "");
+                if (!apenasDigitos.isEmpty()) {
+                    try {
+                        return Integer.parseInt(apenasDigitos);
+                    } catch (NumberFormatException ignored) {}
+                }
+                System.out.println("Entrada invalida! Digite apenas numeros inteiros.");
+            }
+        }
+    }
+
     public static void cadastrarTime() {
 
         System.out.print("Nome do time: ");
-        String nomeTime = scanner.nextLine();
+        String nomeTime = scanner.nextLine().trim();
 
-        System.out.print("Nome do técnico: ");
-        String nomeTecnico = scanner.nextLine();
+        System.out.print("Nome do tecnico: ");
+        String nomeTecnico = scanner.nextLine().trim();
 
-        System.out.print("Idade do técnico: ");
-        int idadeTecnico = Integer.parseInt(scanner.nextLine());
+        int idadeTecnico = lerInteiro("Idade do tecnico: ");
 
         Tecnico tecnico = new Tecnico(nomeTecnico, idadeTecnico, nomeTime);
         Time time = new Time(nomeTime, tecnico);
@@ -42,21 +61,23 @@ public class Main {
         }
 
         listarTimes();
-        System.out.print("Número do time: ");
-        int numeroTime = Integer.parseInt(scanner.nextLine());
+        int numeroTime = lerInteiro("Numero do time: ");
+
+        if (numeroTime < 1 || numeroTime > totalTimes) {
+            System.out.println("Numero do time invalido!");
+            return;
+        }
+
         Time time = times[numeroTime - 1];
 
-        System.out.print("É goleiro? (s/n): ");
-        String resposta = scanner.nextLine();
+        System.out.print("E goleiro? (s/n): ");
+        String resposta = scanner.nextLine().trim();
 
         System.out.print("Nome: ");
-        String nome = scanner.nextLine();
+        String nome = scanner.nextLine().trim();
 
-        System.out.print("Idade: ");
-        int idade = Integer.parseInt(scanner.nextLine());
-
-        System.out.print("Número da camisa: ");
-        int camisa = Integer.parseInt(scanner.nextLine());
+        int idade = lerInteiro("Idade: ");
+        int camisa = lerInteiro("Numero da camisa: ");
 
         // POLIMORFISMO
         Jogador jogador;
@@ -64,8 +85,8 @@ public class Main {
         if (resposta.equalsIgnoreCase("s")) {
             jogador = new Goleiro(nome, idade, camisa);
         } else {
-            System.out.print("Posição: ");
-            String posicao = scanner.nextLine();
+            System.out.print("Posicao: ");
+            String posicao = scanner.nextLine().trim();
             jogador = new Jogador(nome, idade, posicao, camisa);
         }
 
@@ -81,8 +102,12 @@ public class Main {
         }
 
         listarTimes();
-        System.out.print("Número do time: ");
-        int numeroTime = Integer.parseInt(scanner.nextLine());
+        int numeroTime = lerInteiro("Numero do time: ");
+
+        if (numeroTime < 1 || numeroTime > totalTimes) {
+            System.out.println("Numero do time invalido!");
+            return;
+        }
 
         times[numeroTime - 1].listarElenco();
     }
@@ -96,17 +121,16 @@ public class Main {
 
         listarTimes();
 
-        System.out.print("Número do time da casa: ");
-        int casa = Integer.parseInt(scanner.nextLine());
+        int casa = lerInteiro("Numero do time da casa: ");
+        int visitante = lerInteiro("Numero do time visitante: ");
 
-        System.out.print("Número do time visitante: ");
-        int visitante = Integer.parseInt(scanner.nextLine());
+        if (casa < 1 || casa > totalTimes || visitante < 1 || visitante > totalTimes || casa == visitante) {
+            System.out.println("Selecao de times invalida! Escolha dois times diferentes da lista.");
+            return;
+        }
 
-        System.out.print("Gols do " + times[casa - 1].getNome() + ": ");
-        int golsCasa = Integer.parseInt(scanner.nextLine());
-
-        System.out.print("Gols do " + times[visitante - 1].getNome() + ": ");
-        int golsVisitante = Integer.parseInt(scanner.nextLine());
+        int golsCasa = lerInteiro("Gols do " + times[casa - 1].getNome() + ": ");
+        int golsVisitante = lerInteiro("Gols do " + times[visitante - 1].getNome() + ": ");
 
         Partida partida = new Partida(times[casa - 1], times[visitante - 1], golsCasa, golsVisitante);
         partida.finalizar();
@@ -132,7 +156,7 @@ public class Main {
             }
         }
 
-        System.out.println("--- CLASSIFICAÇÃO ---");
+        System.out.println("--- CLASSIFICACAO ---");
         for (int i = 0; i < totalTimes; i++) {
             Time t = times[i];
             System.out.println((i + 1) + " - " + t.getNome() + "  " + t.getPontos() + "pts  "
@@ -151,11 +175,10 @@ public class Main {
             System.out.println("2 - Cadastrar jogador");
             System.out.println("3 - Ver elenco de um time");
             System.out.println("4 - Registrar partida");
-            System.out.println("5 - Ver classificação");
+            System.out.println("5 - Ver classificacao");
             System.out.println("0 - Sair");
-            System.out.print("Opção: ");
 
-            opcao = Integer.parseInt(scanner.nextLine());
+            opcao = lerInteiro("Opcao: ");
 
             switch (opcao) {
                 case 1:
@@ -177,7 +200,7 @@ public class Main {
                     System.out.println("Encerrando...");
                     break;
                 default:
-                    System.out.println("Opção inválida!");
+                    System.out.println("Opcao invalida!");
             }
 
         } while (opcao != 0);

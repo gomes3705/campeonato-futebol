@@ -32,7 +32,7 @@ public class Time {
 
     // POLIMORFISMO
     public void listarElenco() {
-        System.out.println("Técnico:");
+        System.out.println("Tecnico:");
         tecnico.apresentar();
 
         System.out.println("Elenco:");

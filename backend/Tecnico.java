@@ -12,6 +12,6 @@ public class Tecnico extends Pessoa {
     // SOBRESCRITA
     @Override
     public void apresentar() {
-        System.out.println(nome + ", " + idade + " anos, técnico do " + timeComandado);
+        System.out.println(nome + ", " + idade + " anos, tecnico do " + timeComandado);
     }
 }
