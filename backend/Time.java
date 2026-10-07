@@ -21,13 +21,13 @@ public class Time {
         this.totalJogadores = 0;
     }
 
-    public void adicionarJogador(Jogador jogador) {
+    public boolean adicionarJogador(Jogador jogador) {
         if (totalJogadores < elenco.length) {
             elenco[totalJogadores] = jogador;
             totalJogadores++;
-        } else {
-            System.out.println("Elenco cheio!");
+            return true;
         }
+        return false;
     }
 
     // POLIMORFISMO

@@ -1,8 +1,8 @@
 public abstract class Pessoa {
 
     // ENCAPSULAMENTO
-    protected String nome;
-    protected int idade;
+    private String nome;
+    private int idade;
 
     // CONSTRUTOR
     public Pessoa(String nome, int idade) {

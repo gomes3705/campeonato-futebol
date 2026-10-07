@@ -30,7 +30,7 @@ public class Jogador extends Pessoa {
     // SOBRESCRITA
     @Override
     public void apresentar() {
-        System.out.println(nome + ", " + idade + " anos, joga de " + posicao
+        System.out.println(getNome() + ", " + getIdade() + " anos, joga de " + posicao
                 + ", camisa " + numeroCamisa + ", " + golsMarcados + " gols marcados");
     }
 }
