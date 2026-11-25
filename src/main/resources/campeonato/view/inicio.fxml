@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<!-- Painel inicial: totais do campeonato -->
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="campeonato.controller.InicioController" styleClass="tela" spacing="20">
+    <Label styleClass="titulo" text="Painel do Campeonato"/>
+
+    <HBox spacing="20">
+        <VBox styleClass="card" alignment="CENTER" HBox.hgrow="ALWAYS">
+            <Label fx:id="lblTotalTimes" styleClass="card-valor" text="0"/>
+            <Label styleClass="card-texto" text="Times cadastrados"/>
+        </VBox>
+        <VBox styleClass="card" alignment="CENTER" HBox.hgrow="ALWAYS">
+            <Label fx:id="lblTotalJogadores" styleClass="card-valor" text="0"/>
+            <Label styleClass="card-texto" text="Jogadores cadastrados"/>
+        </VBox>
+        <VBox styleClass="card" alignment="CENTER" HBox.hgrow="ALWAYS">
+            <Label fx:id="lblPartidasRealizadas" styleClass="card-valor" text="0"/>
+            <Label styleClass="card-texto" text="Partidas realizadas"/>
+        </VBox>
+        <VBox styleClass="card" alignment="CENTER" HBox.hgrow="ALWAYS">
+            <Label fx:id="lblPartidasPendentes" styleClass="card-valor" text="0"/>
+            <Label styleClass="card-texto" text="Partidas pendentes"/>
+        </VBox>
+    </HBox>
+
+    <VBox styleClass="painel" spacing="8">
+        <Label styleClass="subtitulo" text="Como usar"/>
+        <Label styleClass="texto" text="1. Em Times, cadastre os times e seus técnicos."/>
+        <Label styleClass="texto" text="2. Em Jogadores, monte o elenco de cada time."/>
+        <Label styleClass="texto" text="3. Em Partidas, gere os confrontos e registre os resultados."/>
+        <Label styleClass="texto" text="4. Em Classificação, acompanhe a tabela atualizada."/>
+        <Label styleClass="texto" text="Vitória vale 3 pontos, empate 1 e derrota 0. Desempate por saldo de gols."/>
+    </VBox>
+</VBox>

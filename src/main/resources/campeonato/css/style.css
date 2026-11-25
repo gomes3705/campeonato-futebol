@@ -1,0 +1,325 @@
+/* ============================================================
+   Campeonato de Futebol - estilos da interface JavaFX
+   Tema: gramado verde, linhas brancas e detalhes dourados
+   ============================================================ */
+
+/* Seletor .root: valores padrão de toda a aplicação */
+.root {
+    /* cores reutilizadas no arquivo */
+    -verde-escuro: #0b3d1e;
+    -verde: #1b7a3a;
+    -verde-claro: #2ea44f;
+    -gramado: #eaf5ec;
+    -dourado: #f2b705;
+    -vermelho: #c62828;
+    -texto: #1d2b22;
+    -borda: #c5dcca;
+
+    -fx-font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    -fx-font-size: 14px;
+    -fx-text-fill: -texto;
+    -fx-background-color: -gramado;
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
+
+/* ---------------------------------------------------------- cabeçalho */
+
+/* Seletor por ID */
+#cabecalho {
+    -fx-background-color: linear-gradient(to right, -verde-escuro, -verde);
+    -fx-padding: 14 24 14 24;
+    -fx-border-color: -dourado;
+    -fx-border-width: 0 0 4 0;
+}
+
+#tituloApp {
+    -fx-text-fill: white;
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-letter-spacing: 1px;
+}
+
+.subtitulo-cabecalho {
+    -fx-text-fill: #cfe8d5;
+    -fx-font-size: 13px;
+}
+
+/* --------------------------------------------------------------- menu */
+
+.menu {
+    -fx-background-color: -verde-escuro;
+    -fx-padding: 20 14 20 14;
+}
+
+.menu-titulo {
+    -fx-text-fill: #7fb890;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-padding: 0 0 6 6;
+}
+
+.botao-menu {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-size: 15px;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 11 16 11 16;
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
+}
+
+.botao-menu:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.12);
+}
+
+.botao-menu:pressed {
+    -fx-background-color: rgba(255, 255, 255, 0.22);
+}
+
+.botao-menu:selected {
+    -fx-background-color: -verde-claro;
+    -fx-font-weight: bold;
+    -fx-border-color: -dourado;
+    -fx-border-width: 0 0 0 4;
+    -fx-border-radius: 8;
+}
+
+.botao-sair {
+    -fx-background-color: transparent;
+    -fx-text-fill: #ffb4ab;
+    -fx-border-color: #ffb4ab;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
+}
+
+.botao-sair:hover {
+    -fx-background-color: rgba(198, 40, 40, 0.35);
+    -fx-text-fill: white;
+}
+
+.botao-sair:pressed {
+    -fx-background-color: -vermelho;
+}
+
+/* ------------------------------------------------------------ conteúdo */
+
+.conteudo {
+    -fx-background-color: -gramado;
+}
+
+.tela {
+    -fx-padding: 24;
+}
+
+.titulo {
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -verde-escuro;
+}
+
+.subtitulo {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -verde;
+}
+
+.texto {
+    -fx-text-fill: -texto;
+}
+
+.destaque {
+    -fx-font-weight: bold;
+    -fx-font-size: 15px;
+    -fx-text-fill: -verde-escuro;
+}
+
+/* painéis brancos com bordas arredondadas */
+.painel {
+    -fx-background-color: white;
+    -fx-background-radius: 12;
+    -fx-border-color: -borda;
+    -fx-border-radius: 12;
+    -fx-padding: 16;
+}
+
+/* cartões do painel inicial */
+.card {
+    -fx-background-color: white;
+    -fx-background-radius: 14;
+    -fx-border-color: -verde-claro;
+    -fx-border-width: 0 0 5 0;
+    -fx-border-radius: 14;
+    -fx-padding: 22;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.15), 10, 0, 0, 3);
+}
+
+.card-valor {
+    -fx-font-size: 40px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -verde;
+}
+
+.card-texto {
+    -fx-text-fill: #55685b;
+}
+
+/* ------------------------------------------------------------ botões */
+
+.button {
+    -fx-background-color: white;
+    -fx-text-fill: -verde-escuro;
+    -fx-border-color: -verde;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-padding: 8 16 8 16;
+    -fx-cursor: hand;
+}
+
+.button:hover {
+    -fx-background-color: #dff0e3;
+}
+
+.button:pressed {
+    -fx-background-color: #bfe0c7;
+}
+
+.button:disabled {
+    -fx-opacity: 0.45;
+}
+
+.botao-principal {
+    -fx-background-color: -verde;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-border-color: -verde;
+}
+
+.botao-principal:hover {
+    -fx-background-color: -verde-claro;
+}
+
+.botao-principal:pressed {
+    -fx-background-color: -verde-escuro;
+}
+
+.botao-secundario {
+    -fx-border-color: #9bb5a2;
+    -fx-text-fill: #55685b;
+}
+
+.botao-perigo {
+    -fx-border-color: -vermelho;
+    -fx-text-fill: -vermelho;
+}
+
+.botao-perigo:hover {
+    -fx-background-color: #fde7e7;
+}
+
+.botao-perigo:pressed {
+    -fx-background-color: #f8c9c9;
+}
+
+/* --------------------------------------------------- campos de entrada */
+
+.text-field, .combo-box {
+    -fx-background-color: white;
+    -fx-background-radius: 8;
+    -fx-border-color: -borda;
+    -fx-border-radius: 8;
+    -fx-padding: 6 10 6 10;
+}
+
+.combo-box {
+    -fx-padding: 2 4 2 4;
+}
+
+.text-field:focused, .combo-box:focused {
+    -fx-border-color: -dourado;
+    -fx-border-width: 2;
+}
+
+.text-field:disabled, .combo-box:disabled {
+    -fx-opacity: 0.6;
+}
+
+/* ----------------------------------------------------------- tabelas */
+
+.table-view {
+    -fx-background-color: white;
+    -fx-background-radius: 12;
+    -fx-border-color: -borda;
+    -fx-border-radius: 12;
+    -fx-padding: 2;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: -verde-escuro;
+    -fx-background-radius: 10 10 0 0;
+}
+
+.table-view .column-header,
+.table-view .filler {
+    -fx-background-color: -verde-escuro;
+    -fx-border-color: transparent;
+    -fx-size: 38px;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.table-row-cell {
+    -fx-background-color: white;
+    -fx-cell-size: 36px;
+    -fx-table-cell-border-color: transparent;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: #f3faf4;
+}
+
+.table-row-cell:hover {
+    -fx-background-color: #dff0e3;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: -dourado;
+}
+
+.table-row-cell:selected .table-cell {
+    -fx-text-fill: -texto;
+    -fx-font-weight: bold;
+}
+
+.table-cell {
+    -fx-alignment: CENTER_LEFT;
+    -fx-text-fill: -texto;
+}
+
+/* colunas numéricas centralizadas (styleClass definida no FXML) */
+.table-cell.coluna-numero {
+    -fx-alignment: CENTER;
+}
+
+/* coluna de pontos da classificação (styleClass definida no FXML) */
+.table-cell.coluna-pontos {
+    -fx-alignment: CENTER;
+    -fx-font-weight: bold;
+    -fx-text-fill: -verde;
+}
+
+/* ------------------------------------------------------- mensagens */
+
+.msg-sucesso {
+    -fx-text-fill: -verde;
+    -fx-font-weight: bold;
+}
+
+.msg-erro {
+    -fx-text-fill: -vermelho;
+    -fx-font-weight: bold;
+}

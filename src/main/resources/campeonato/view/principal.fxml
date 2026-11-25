@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<!-- Tela principal: cabeçalho, menu de navegação e área de conteúdo -->
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="campeonato.controller.PrincipalController">
+    <top>
+        <HBox id="cabecalho" alignment="CENTER_LEFT" spacing="12">
+            <Label id="tituloApp" text="CAMPEONATO DE FUTEBOL"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Label styleClass="subtitulo-cabecalho" text="Times, jogadores, partidas e classificação"/>
+        </HBox>
+    </top>
+    <left>
+        <VBox styleClass="menu" spacing="8" prefWidth="210">
+            <fx:define>
+                <ToggleGroup fx:id="grupoMenu"/>
+            </fx:define>
+            <Label styleClass="menu-titulo" text="MENU"/>
+            <ToggleButton text="Início" toggleGroup="$grupoMenu" selected="true" maxWidth="Infinity"
+                          styleClass="botao-menu" onAction="#mostrarInicio"/>
+            <ToggleButton text="Times" toggleGroup="$grupoMenu" maxWidth="Infinity"
+                          styleClass="botao-menu" onAction="#mostrarTimes"/>
+            <ToggleButton text="Jogadores" toggleGroup="$grupoMenu" maxWidth="Infinity"
+                          styleClass="botao-menu" onAction="#mostrarJogadores"/>
+            <ToggleButton text="Partidas" toggleGroup="$grupoMenu" maxWidth="Infinity"
+                          styleClass="botao-menu" onAction="#mostrarPartidas"/>
+            <ToggleButton text="Classificação" toggleGroup="$grupoMenu" maxWidth="Infinity"
+                          styleClass="botao-menu" onAction="#mostrarClassificacao"/>
+            <Region VBox.vgrow="ALWAYS"/>
+            <Button text="Sair" maxWidth="Infinity" styleClass="botao-sair" onAction="#sair"/>
+        </VBox>
+    </left>
+    <center>
+        <StackPane fx:id="painelConteudo" styleClass="conteudo"/>
+    </center>
+</BorderPane>
